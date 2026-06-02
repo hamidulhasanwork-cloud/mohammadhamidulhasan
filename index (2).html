@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Hamidul Hasan | Premium Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#050811',
+                        glassBg: 'rgba(11, 18, 33, 0.75)',
+                        glassBorder: 'rgba(255, 255, 255, 0.06)',
+                        emeraldAccent: '#10b981',
+                        neonPurple: '#8b5cf6',
+                        neonBlue: '#3b82f6',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Hind Siliguri', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob-morph': 'morph 8s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        morph: {
+                            '0%, 100%': { borderRadius: '42% 58% 70% 30% / 45% 45% 55% 55%' },
+                            '50%': { borderRadius: '70% 30% 52% 48% / 60% 40% 60% 40%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+            background-color: #03060d;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .glass-card {
+            background: rgba(11, 18, 33, 0.7);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .custom-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        }
+        .custom-accordion-content.active {
+            max-height: 1500px;
+            padding-top: 1rem;
+            padding-bottom: 0.5rem;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #03060d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body class="text-slate-200 min-h-screen selection:bg-emerald-500 selection:text-black">
+
+    <!-- TOP NAVIGATION BAR WITH STACKED RIGHT CONTROLS -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-3 px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between glass-card rounded-2xl px-5 py-3 relative">
+            
+            <!-- Logo area -->
+            <div class="flex items-center gap-3">
+                <img src="https://i.ibb.co.com/20Ry8SyS/ei-1772654679241-removebg-preview.png" 
+                     alt="Mohammad Hamidul Hasan" 
+                     onerror="this.src='https://via.placeholder.com/100'"
+                     class="w-10 h-10 rounded-full border-2 border-emerald-500 object-cover shadow-lg shadow-emerald-500/20">
+                <span class="font-extrabold text-sm md:text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    HAMIDUL HASAN
+                </span>
+            </div>
+
+            <!-- Stacked Controls (Menu on top, Language switch directly under it) -->
+            <div class="flex flex-col items-end gap-1.5 z-50">
+                <!-- Menu Control button aligned far right -->
+                <button onclick="toggleMenu()" class="px-4 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-xl transition-all duration-300 flex items-center gap-2 font-bold text-xs">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    <span class="lang-en">Menu Control</span>
+                    <span class="lang-bn hidden">মেনু কন্ট্রোল</span>
+                </button>
+
+                <!-- Language Switcher button directly below it -->
+                <button onclick="toggleLanguage()" class="px-3 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-extrabold text-[10px] md:text-xs rounded-lg hover:shadow-[0_0_12px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center gap-1 active:scale-95">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="lang-btn-text">বাং</span>
+                </button>
+            </div>
+
+            <!-- Expandable Panel -->
+            <div id="navigation-panel" class="absolute top-[102%] left-0 w-full glass-card rounded-2xl p-4 mt-2 hidden grid grid-cols-2 md:grid-cols-5 gap-3 border border-white/10 z-50">
+                <button onclick="scrollToSection('hero'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-house text-emerald-400"></i>
+                    <span class="lang-en">Home</span><span class="lang-bn hidden">হোম</span>
+                </button>
+                <button onclick="scrollToSection('academic'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-graduation-cap text-emerald-400"></i>
+                    <span class="lang-en">Education</span><span class="lang-bn hidden">শিক্ষা জীবন</span>
+                </button>
+                <button onclick="scrollToSection('skills-section'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-sliders text-emerald-400"></i>
+                    <span class="lang-en">Skills</span><span class="lang-bn hidden">দক্ষতা</span>
+                </button>
+                <button onclick="scrollToSection('services-section'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-briefcase text-emerald-400"></i>
+                    <span class="lang-en">Services</span><span class="lang-bn hidden">সার্ভিসসমূহ</span>
+                </button>
+                <button onclick="scrollToSection('certifications-section'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-certificate text-emerald-400"></i>
+                    <span class="lang-en">Certificates</span><span class="lang-bn hidden">সার্টিফিকেট</span>
+                </button>
+                <button onclick="scrollToSection('research-section'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-book-open-reader text-emerald-400"></i>
+                    <span class="lang-en">Research</span><span class="lang-bn hidden">রিসার্চ কলাম</span>
+                </button>
+                <button onclick="scrollToSection('gallery-section'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-images text-emerald-400"></i>
+                    <span class="lang-en">Gallery</span><span class="lang-bn hidden">গ্যালারি</span>
+                </button>
+                <button onclick="scrollToSection('welfare'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-hand-holding-heart text-emerald-400"></i>
+                    <span class="lang-en">Welfare</span><span class="lang-bn hidden">জনকল্যাণ</span>
+                </button>
+                <button onclick="scrollToSection('global-engagement'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-earth-americas text-emerald-400"></i>
+                    <span class="lang-en">Global</span><span class="lang-bn hidden">বৈশ্বিক সম্পৃক্ততা</span>
+                </button>
+                <button onclick="scrollToSection('contact'); toggleMenu();" class="p-3 text-left hover:bg-emerald-500/10 rounded-xl transition-all text-xs font-semibold flex items-center gap-2 border border-white/5">
+                    <i class="fa-solid fa-envelope text-emerald-400"></i>
+                    <span class="lang-en">Contact</span><span class="lang-bn hidden">যোগাযোগ</span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="pt-28 pb-16 px-4 max-w-7xl mx-auto space-y-16">
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4 scroll-mt-28">
+            <!-- Left Side: Profile Image -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center text-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500 via-teal-500 to-purple-600 animate-blob-morph opacity-80 blur-md scale-105 shadow-[0_0_40px_rgba(16,185,129,0.25)]"></div>
+                    <div class="absolute inset-2 bg-darkBg animate-blob-morph flex items-center justify-center overflow-hidden border border-white/10">
+                        <img src="https://i.ibb.co.com/20Ry8SyS/ei-1772654679241-removebg-preview.png" 
+                             alt="Mohammad Hamidul Hasan Profile" 
+                             onerror="this.src='https://via.placeholder.com/300'"
+                             class="w-[95%] h-[95%] object-cover scale-105 hover:scale-110 transition-transform duration-500 ease-out z-10">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-bold shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                        <i class="fa-solid fa-circle-check text-xs animate-pulse"></i>
+                        <span id="changing-profession">Email Marketer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Personal Identity -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="space-y-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="lang-en">Actively Seeking Collaboration</span>
+                        <span class="lang-bn hidden">সহযোগিতার জন্য সম্পূর্ণ প্রস্তুত</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                        <span class="block text-slate-100">Mohammad</span>
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500">Hamidul Hasan</span>
+                    </h1>
+                </div>
+
+                <p class="text-sm md:text-base text-slate-300 border-l-4 border-emerald-500 pl-4 py-1 italic leading-relaxed">
+                    Student | Academic Achiever | Writer | Certified Skill Developer | Debater | Social Volunteer | Journalist | Social Activist | Business Case Analyzer
+                </p>
+
+                <!-- Location & Contact info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-400">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-900/80 flex items-center justify-center text-emerald-400 border border-white/5">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Current Address</p>
+                            <p class="text-slate-200 text-xs md:text-sm">Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-slate-900/80 flex items-center justify-center text-emerald-400 border border-white/5">
+                            <i class="fa-solid fa-house-user"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Permanent Address</p>
+                            <p class="text-slate-200 text-xs md:text-sm">Lohagara, Chattagram, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 md:col-span-2">
+                        <div class="w-10 h-10 rounded-lg bg-slate-900/80 flex items-center justify-center text-emerald-400 border border-white/5">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Email Channel</p>
+                            <a href="mailto:hamidulhasan2006@gmail.com" class="text-slate-200 hover:text-emerald-400 transition-colors font-medium text-xs md:text-sm">hamidulhasan2006@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto-changing Quote Box -->
+                <div class="glass-card rounded-2xl p-5 border-l-4 border-emerald-500 relative overflow-hidden group hover:scale-[1.01] transition-transform duration-300">
+                    <div class="absolute -top-3 -right-3 text-7xl text-emerald-500/5 font-serif select-none pointer-events-none">“</div>
+                    <p id="changing-quote-en" class="text-slate-100 font-medium md:text-lg mb-2 transition-opacity duration-500">
+                        "True leadership is not about being in charge, it is about taking care of those in our charge through constant growth and vision."
+                    </p>
+                    <p id="changing-quote-bn" class="text-emerald-400 text-xs md:text-sm italic font-medium transition-opacity duration-500">
+                        — প্রকৃত নেতৃত্ব কেবল হুকুম দেওয়া নয়, বরং অবিরাম উন্নয়ন এবং সুদূরপ্রসারী দৃষ্টিভঙ্গির মাধ্যমে অন্যের দায়িত্ব নেওয়া এবং আগলে রাখা।
+                    </p>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <button onclick="scrollToSection('contact')" class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-black font-extrabold rounded-xl hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 text-xs md:text-sm">
+                        <span class="lang-en"><i class="fa-solid fa-paper-plane mr-2"></i> Get in Touch</span>
+                        <span class="lang-bn hidden"><i class="fa-solid fa-paper-plane mr-2"></i> যোগাযোগ করুন</span>
+                    </button>
+                    <button onclick="scrollToSection('social-grid-anchor')" class="px-5 py-3 bg-slate-900 hover:bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 text-xs md:text-sm">
+                        <i class="fa-solid fa-link"></i>
+                        <span class="lang-en">Quick Connection Bar</span>
+                        <span class="lang-bn hidden">কানেকশন বার দেখুন</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SERVICES & PORTFOLIO SHOWCASE SECTION -->
+        <section id="services-section" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">My Services & Works</span>
+                    <span class="lang-bn hidden">সার্ভিস ও প্রজেক্ট পোর্টফোলিও</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Professional services I offer to global clients accompanied by successfully deployed project showcases.</span>
+                    <span class="lang-bn hidden">বৈশ্বিক ক্লায়েন্টদের জন্য আমার প্রদানকৃত প্রফেশনাল সার্ভিস এবং কাজসমূহের বাস্তব ডেমো।</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Service 1: Email Marketing -->
+                <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 hover:border-emerald-500/50 transition-all duration-300 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 font-bold px-3 py-1 rounded-full">Email Marketing</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Email Automation & B2B Lead Outreach</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Setting up enterprise-level drip sequences, newsletter automation, lead capture pages, and email copy designed for maximum open and conversion rates.
+                    </p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-white/5 space-y-2">
+                        <p class="text-xs font-bold text-emerald-400 uppercase tracking-widest"><i class="fa-solid fa-folder-open mr-1"></i> Featured Work:</p>
+                        <p class="text-xs text-white font-bold">B2B SaaS Cold Outreach Sequence</p>
+                        <p class="text-[11px] text-slate-400">Developed campaign achieving 65% open rates. Built automatic lead generation funnel using custom target scraper.</p>
+                        <button onclick="scrollToSection('contact')" class="text-[11px] text-emerald-400 font-bold hover:underline flex items-center gap-1">Inquire About This Service <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Service 2: Web Dev -->
+                <div class="glass-card rounded-3xl p-6 border border-teal-500/20 hover:border-teal-500/50 transition-all duration-300 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-400 text-2xl">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span class="text-xs bg-teal-500/10 text-teal-400 font-bold px-3 py-1 rounded-full">Web Development</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Responsive Web & Interactive UI Designs</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Coding high-performance landing pages, custom responsive interfaces, and interactive dashboards mapped to systems' modern dark modes.
+                    </p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-white/5 space-y-2">
+                        <p class="text-xs font-bold text-teal-400 uppercase tracking-widest"><i class="fa-solid fa-folder-open mr-1"></i> Featured Work:</p>
+                        <p class="text-xs text-white font-bold">Premium Portfolio Site Hub</p>
+                        <p class="text-[11px] text-slate-400">Fully responsive, single-file lightweight architecture showcasing high-fidelity glass-morphism transitions and components.</p>
+                        <button onclick="scrollToSection('contact')" class="text-[11px] text-teal-400 font-bold hover:underline flex items-center gap-1">Inquire About This Service <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Service 3: AI Agents -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <span class="text-xs bg-purple-500/10 text-purple-400 font-bold px-3 py-1 rounded-full">AI & Automation</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Autonomous N8N Workflows & Custom Bots</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Automating boring workflows using secure AI Agents, ChatGPT integrations, and autonomous nodes running on N8N servers.
+                    </p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-white/5 space-y-2">
+                        <p class="text-xs font-bold text-purple-400 uppercase tracking-widest"><i class="fa-solid fa-folder-open mr-1"></i> Featured Work:</p>
+                        <p class="text-xs text-white font-bold">Autonomous Slack & Discord Support AI</p>
+                        <p class="text-[11px] text-slate-400">A customized system reading client messages, parsing questions against private documentation, and posting answers with 95% accuracy.</p>
+                        <button onclick="scrollToSection('contact')" class="text-[11px] text-purple-400 font-bold hover:underline flex items-center gap-1">Inquire About This Service <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Service 4: Academic Training -->
+                <div class="glass-card rounded-3xl p-6 border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl">
+                            <i class="fa-solid fa-person-chalkboard"></i>
+                        </div>
+                        <span class="text-xs bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full">Training</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Arabic Speaking & Technical Training</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        One-on-one personal and group coaching on modern Arabic communication syntax, basic computing parameters, and prompt engineering protocols.
+                    </p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-white/5 space-y-2">
+                        <p class="text-xs font-bold text-blue-400 uppercase tracking-widest"><i class="fa-solid fa-folder-open mr-1"></i> Featured Work:</p>
+                        <p class="text-xs text-white font-bold">Arabic Phonetics & Conversational Guide</p>
+                        <p class="text-[11px] text-slate-400">Successfully coached 45+ students on theological reading parameters, correct letter pronunciation, and basic speaking dialogue.</p>
+                        <button onclick="scrollToSection('contact')" class="text-[11px] text-blue-400 font-bold hover:underline flex items-center gap-1">Inquire About This Service <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. EDUCATION & ACADEMIC JOURNEY -->
+        <section id="academic" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">Academic Journey</span>
+                    <span class="lang-bn hidden">শিক্ষা জীবন ও অর্জন</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Click on each degree bar to expand and explore institution and GPA achievements.</span>
+                    <span class="lang-bn hidden">বিস্তারিত ও ফলাফল জানতে নিচের প্রতিটি ডিগ্রী বারে ক্লিক করুন।</span>
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- Honors -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('edu-1')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-graduation-cap"></i></span>
+                            <div>
+                                <h3 class="text-base md:text-lg text-white">B.A. (Hons) in Educational Administration</h3>
+                                <p class="text-xs text-slate-400">Noakhali Science & Technology University (NSTU)</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-lg font-bold">Ongoing</span>
+                    </button>
+                    <div id="edu-1" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 text-sm text-slate-300 space-y-2 border-t border-white/5">
+                        <p class="leading-relaxed">
+                            <strong class="text-emerald-400 font-bold">Department:</strong> Educational Administration (শিক্ষা প্রশাসন) <br>
+                            <strong class="text-emerald-400 font-bold">Institute:</strong> Noakhali Science & Technology University (NSTU) <br>
+                            <strong class="text-emerald-400 font-bold">Academic Status:</strong> Study ongoing. Focus on strategic education management, organizational policy design, and structural school governance.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Fazil -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('edu-2')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-book-open"></i></span>
+                            <div>
+                                <h3 class="text-base md:text-lg text-white">Fazil (Undergraduate Level)</h3>
+                                <p class="text-xs text-slate-400">Ta'mirul Millat Kamil Madrasah</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-lg font-bold">Ongoing</span>
+                    </button>
+                    <div id="edu-2" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 text-sm text-slate-300 space-y-2 border-t border-white/5">
+                        <p class="leading-relaxed">
+                            <strong class="text-emerald-400 font-bold">Institution:</strong> Ta'mirul Millat Kamil Madrasah, Dhaka <br>
+                            <strong class="text-emerald-400 font-bold">Status:</strong> Undergrad Arabic & theology tracks, facilitating profound command of Arabic and theological translations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Alim -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('edu-3')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-scroll"></i></span>
+                            <div>
+                                <h3 class="text-base md:text-lg text-white">Alim (HSC Equivalent)</h3>
+                                <p class="text-xs text-slate-400">Ta'mirul Millat Kamil Madrasah</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-lg font-bold">GPA 5.00</span>
+                    </button>
+                    <div id="edu-3" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 text-sm text-slate-300 space-y-2 border-t border-white/5">
+                        <p class="leading-relaxed">
+                            <strong class="text-emerald-400 font-bold">Institution:</strong> Ta'mirul Millat Kamil Madrasah, Dhaka <br>
+                            <strong class="text-emerald-400 font-bold">Result:</strong> GPA 5.00 out of 5.00. Showcased premium focus on Arabic speech, national debates, and scholastic integrity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Dakhil -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('edu-4')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-certificate"></i></span>
+                            <div>
+                                <h3 class="text-base md:text-lg text-white">Dakhil (SSC Equivalent)</h3>
+                                <p class="text-xs text-slate-400">Adhunagar Islamia Kamil Madrasah</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-lg font-bold">GPA 5.00</span>
+                    </button>
+                    <div id="edu-4" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 text-sm text-slate-300 space-y-2 border-t border-white/5">
+                        <p class="leading-relaxed">
+                            <strong class="text-emerald-400 font-bold">Institution:</strong> Adhunagar Islamia Kamil Madrasah, Chittagong <br>
+                            <strong class="text-emerald-400 font-bold">Result:</strong> GPA 5.00 out of 5.00. Achieved excellent score across multiple core scientific subjects.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- JDC -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('edu-5')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-award"></i></span>
+                            <div>
+                                <h3 class="text-base md:text-lg text-white">JDC (Junior Dakhil Certificate)</h3>
+                                <p class="text-xs text-slate-400">Charmba Jameul Ulum Islamia Dakhil Madrasah</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-lg font-bold">GPA 5.00</span>
+                    </button>
+                    <div id="edu-5" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 text-sm text-slate-300 space-y-2 border-t border-white/5">
+                        <p class="leading-relaxed">
+                            <strong class="text-emerald-400 font-bold">Institution:</strong> Charmba Jameul Ulum Islamia Dakhil Madrasah <br>
+                            <strong class="text-emerald-400 font-bold">Result:</strong> GPA 5.00 out of 5.00. Perfect score with notable distinction.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Ibtedayee -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('edu-6')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-medal"></i></span>
+                            <div>
+                                <h3 class="text-base md:text-lg text-white">Ibtedayee (Primary Education)</h3>
+                                <p class="text-xs text-slate-400">Maizbila Rahmania Madrasah</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-lg font-bold">Golden A+</span>
+                    </button>
+                    <div id="edu-6" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 text-sm text-slate-300 space-y-2 border-t border-white/5">
+                        <p class="leading-relaxed">
+                            <strong class="text-emerald-400 font-bold">Institution:</strong> Maizbila Rahmania Madrasah <br>
+                            <strong class="text-emerald-400 font-bold">Result:</strong> Golden A+ / Distinction status.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MY SKILLS & LANGUAGES -->
+        <section id="skills-section" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">My Skills & Expertise</span>
+                    <span class="lang-bn hidden">আমার বিস্তারিত দক্ষতা প্যানেল</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Highly detailed skills mapped from certifications. Click each sector below to explore specific ratings, source platforms, and experience records.</span>
+                    <span class="lang-bn hidden">সার্টিফিকেট থেকে প্রাপ্ত বিস্তারিত দক্ষতা। রেটিং, কাজের অভিজ্ঞতা ও সোর্স দেখতে নিচের ক্যাটাগরি বারে ক্লিক করুন।</span>
+                </p>
+            </div>
+
+            <!-- Language Proficiency Container -->
+            <div class="max-w-4xl mx-auto glass-card rounded-3xl p-6 space-y-6">
+                <h3 class="text-xl font-bold text-emerald-400 border-l-4 border-emerald-500 pl-3 flex items-center gap-2">
+                    <i class="fa-solid fa-language text-lg"></i>
+                    <span class="lang-en">Language Skills</span>
+                    <span class="lang-bn hidden">ভাষাগত দক্ষতা</span>
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Bangla -->
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-bold text-sm">Bangla</span>
+                            <span class="text-emerald-400 text-xs font-bold">100%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <!-- English -->
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-bold text-sm">English</span>
+                            <span class="text-emerald-400 text-xs font-bold">70%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <!-- Hindi -->
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-bold text-sm">Hindi</span>
+                            <span class="text-emerald-400 text-xs font-bold">90%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <!-- Urdu -->
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-bold text-sm">Urdu</span>
+                            <span class="text-emerald-400 text-xs font-bold">80%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <!-- Arabic -->
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-bold text-sm">Arabic</span>
+                            <span class="text-emerald-400 text-xs font-bold">40%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <!-- Turkish -->
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-white/5">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-bold text-sm">Turkish</span>
+                            <span class="text-emerald-400 text-xs font-bold">30%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Sectors Accordion -->
+            <div class="max-w-4xl mx-auto space-y-4">
+                
+                <!-- Sector A: AI, Machine Learning & Prompt Engineering -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('skills-cat-a')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-robot"></i></span>
+                            <h3 class="text-base md:text-lg text-white">AI, Machine Learning & Prompt Engineering</h3>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <div id="skills-cat-a" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <!-- Prompt Engineering -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">System Instruction & Prompt Design</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (5.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Engineering clear, robust system guidelines, few-shot templates, role-play configurations, and prompt injection mitigation filters. Verified by Rajshahi University Science Club & UniAthena.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 2+ Years</span>
+                            </div>
+                        </div>
+                        <!-- AI Agents -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Autonomous AI Agents & N8N Webhooks</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (5.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Designing complex non-linear workflow charts, deploying autonomous web scraping scripts, database automation nodes, and API communication channels. Verified by Ostad Platform.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 2 Years</span>
+                            </div>
+                        </div>
+                        <!-- Machine Learning -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Machine Learning Pipelines & Data Curation</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐☆ (4.5)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Basic machine learning algorithm implementations, training dataset preparation, linear classifications, and models evaluation. Verified by Ostad.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 1.5 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sector B: Digital Marketing & Business Strategy -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('skills-cat-c')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400"><i class="fa-solid fa-chart-line"></i></span>
+                            <h3 class="text-base md:text-lg text-white">Digital Marketing & Business Strategy</h3>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <div id="skills-cat-c" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <!-- Email Marketing -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">B2B Email Marketing & Outreach Sequences</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (5.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Formulating conversion-oriented subject lines, high deliverability drip automation setups, lists formatting, and cold calling templates. Verified by 10MS.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 3 Years</span>
+                            </div>
+                        </div>
+                        <!-- SEO -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">SEO Audit, Traffic & Target Analysis</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐☆ (4.6)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Target audience segmentation, competitor analysis, search engine parameters tuning, and keyword indexing layouts. Verified by UniAthena.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 2+ Years</span>
+                            </div>
+                        </div>
+                        <!-- Business Case Solving -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Business Strategy & Case Study Analysis</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (4.8)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Analyzing corporate case structures, defining operational flaws, designing long-term marketing frameworks, and solution pitching. Verified by 10MS.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 3 Years</span>
+                            </div>
+                        </div>
+                        <!-- HRM -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Human Resource & Team Management</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐☆ (4.2)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Structuring team tasks, organizational behavior, conflict resolution, recruiting structures and performance metrics. Verified by UniAthena.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 1 Year</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sector C: Cyber Security & Advanced Data Systems -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('skills-cat-b')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400"><i class="fa-solid fa-shield-halved"></i></span>
+                            <h3 class="text-base md:text-lg text-white">Cyber Security & Advanced Data Systems</h3>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <div id="skills-cat-b" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <!-- Hacking -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Ethical Hacking & Bug Bounty Audits</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐☆ (4.2)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">System penetration testing, OWASP Top 10 auditing, network configuration analysis, secure code architecture, and vulnerability tracking. Verified by Ostad.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 1 Year</span>
+                            </div>
+                        </div>
+                        <!-- Excel Automation -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Excel Automation & API Formulas</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (4.8)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Integrating ChatGPT model instructions with spreadsheets, executing complex VB macros, formatting sheets, and automated data logging. Verified by Microsoft.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 3 Years</span>
+                            </div>
+                        </div>
+                        <!-- Cyber Hygiene -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Cyber Hygiene & Local Data Encryption</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (5.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Protecting user metadata, securing social configurations, anti-phishing practices, browser security settings, and data protection layouts. Verified by Sajeda Foundation.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 2 Years</span>
+                            </div>
+                        </div>
+                        <!-- Data Entry -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Advanced Data Scraping & Cleansing</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (4.9)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Formatting irregular data pools, sorting data, spreadsheet functions, scraping web forms, and secure cloud records keeping. Verified by Ghoori Learning.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 3 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sector D: Creative, Communication & Humanity Skills -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('skills-cat-d')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400"><i class="fa-solid fa-microphone-lines"></i></span>
+                            <h3 class="text-base md:text-lg text-white">Creative, Communication & Humanity Skills</h3>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    
+                    <div id="skills-cat-d" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <!-- Video Editing -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Video Editing & Multi-track Editing</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐☆ (4.5)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Adobe Premiere multi-camera synchronization, timeline cuts, keyframe animations, audio noise reduction, and video color grading. Verified by Ghoori Learning.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 2+ Years</span>
+                            </div>
+                        </div>
+                        <!-- Book Publishing -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Book Publishing Format & Editorial Copywriting</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (5.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Draft curation, structural chapter reviews, copyright laws, publishing house coordination, and book launching strategy. Verified by 10MS.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 3 Years</span>
+                            </div>
+                        </div>
+                        <!-- Bangla Debating -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Parliamentary Bangla Debating & Rhetoric</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐⭐ (5.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Critical logic modeling, structured rebuttals, dynamic public speaking parameters, and state representation. Verified by 10MS.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 4+ Years</span>
+                            </div>
+                        </div>
+                        <!-- Arabic Vocals -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-white/5 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white font-bold text-sm">Arabic Conversational Dialogue & Translations</span>
+                                <span class="text-emerald-400 font-extrabold text-xs">Rating: ⭐⭐⭐⭐☆ (4.0)</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Dialogue retention, Arabic grammar syntax rules, and translation of official theological scripts. Verified by 10MS.</p>
+                            <div class="flex justify-between items-center text-[10px] text-slate-500">
+                                <span>Certified: Yes</span>
+                                <span>Experience: 2 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. OFFICIAL CERTIFICATIONS -->
+        <section id="certifications-section" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">Official Certifications</span>
+                    <span class="lang-bn hidden">সার্টিফিকেট ও ট্রেনিং তালিকা</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Inspect and verify any certificate from various institutions instantly.</span>
+                    <span class="lang-bn hidden">আমার সকল সনদ ও ক্র্যাডেন্সিয়াল যাচাই করতে সংশ্লিষ্ট ক্যাটাগরি প্যানেলে ক্লিক করুন।</span>
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+
+                <!-- 10 Minute School -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('certs-10ms')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <span class="text-base text-white font-extrabold">Ten Minute School (10MS)</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="certs-10ms" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Bangla Debating Course</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">6834344c29118</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Bangla Debating', '6834344c29118', 'Ten Minute School', 'Debate models, argumentative rebuttals, dynamic public pitches.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Email Writing</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">68ea74709cae2</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Email Writing', '68ea74709cae2', 'Ten Minute School', 'B2B cold templates, sequence building, high open-rate optimization.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Business Case Solving</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">684d887f1da8b</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Business Case Solving', '684d887f1da8b', 'Ten Minute School', 'Analyzing business reports, corporate structures, case methodology.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">English for Everyday</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">68ee091836d90</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('English for Everyday', '68ee091836d90', 'Ten Minute School', 'Fluent conversations, grammar systems, vocabulary parameters.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Freelancing এর হাতেখড়ি</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">684d8dac13ad1</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Freelancing এর হাতেখড়ি', '684d8dac13ad1', 'Ten Minute School', 'Upwork and Fiverr marketplaces, direct client proposal writing, payouts.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">How to Publish A Book</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">683435e968348</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('How to Publish A Book', '683435e968348', 'Ten Minute School', 'Writing formats, publisher communication, copyrights, distribution channels.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Arabic Speaking Course</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">683087f94419b</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Arabic Speaking Course', '683087f94419b', 'Ten Minute School', 'Modern Arabic vocabulary, verbal structures, direct listening, conversation skills.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ghoori Learning -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('certs-ghoori')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <span class="text-base text-white font-extrabold">Ghoori Learning Platform</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="certs-ghoori" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Data Entry Advanced Course</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">GL-03510770249</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Data Entry Advanced', 'GL-03510770249', 'Ghoori Learning', 'Secure form automation, data scraping, databases organization.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Video Editing</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">GL-00251016579</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Video Editing', 'GL-00251016579', 'Ghoori Learning', 'Audio engineering, Adobe Premiere keyframes, text rendering.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ostad -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('certs-ostad')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <span class="text-base text-white font-extrabold">Ostad Platform</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="certs-ostad" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">AI Builder: Create Agents and N8N</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">C42813</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('AI Builder: Agents & N8N', 'C42813', 'Ostad', 'Designing dynamic database API integrations, autonomous N8N webhooks.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Cyber Security Unleashed: Hacking & Bug Bounty</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">c43171</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Cyber Security Hacking', 'c43171', 'Ostad', 'System penetration tests, defense strategies, bug reports.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">The Complete Machine Learning Roadmap</h4>
+                                <p class="text-xs text-slate-500">ID: <span class="text-emerald-400 font-mono">c42819</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Machine Learning Roadmap', 'c42819', 'Ostad', 'Designing predictions models, regression metrics, and dataset curation.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UniAthena, Microsoft & Foundations -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('certs-athena-ms')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <span class="text-base text-white font-extrabold">UniAthena, Microsoft & Foundations</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="certs-athena-ms" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Basics of Digital Marketing</h4>
+                                <p class="text-xs text-slate-500">UniAthena - ID: <span class="text-emerald-400 font-mono">9237-9818-5641</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Basics of Digital Marketing', '9237-9818-5641', 'UniAthena', 'Foundations of web traffic, consumer analytics, and SEO planning.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Mastering ChatGPT</h4>
+                                <p class="text-xs text-slate-500">UniAthena - ID: <span class="text-emerald-400 font-mono">3847-4017-5663</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Mastering ChatGPT', '3847-4017-5663', 'UniAthena', 'Formulating advanced generative prompts, system settings, model weights.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Basics in Human Resource Management</h4>
+                                <p class="text-xs text-slate-500">UniAthena - ID: <span class="text-emerald-400 font-mono">8609-0557-9308</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Basics in Human Resource Management', '8609-0557-9308', 'UniAthena', 'Human behaviors, recruitments strategy, corporate protocols.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Excel Automation using ChatGPT</h4>
+                                <p class="text-xs text-slate-500">Microsoft Partner - ID: <span class="text-emerald-400 font-mono">10107939</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Excel Automation via ChatGPT', '10107939', 'Microsoft', 'Deploying AI agents to build excel logic, macros scripts, and automated sheets.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Prompt Engineering Certificate</h4>
+                                <p class="text-xs text-slate-500">Rajshahi University Science Club</p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Prompt Engineering', 'RU-SC-PROMPT-01', 'Rajshahi University Science Club', 'Few-shot engineering, guardrails against prompt injection.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Cyber Hygiene Training</h4>
+                                <p class="text-xs text-slate-500">Sajeda Foundation</p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Cyber Hygiene', 'SF-CYBER-2026', 'Sajeda Foundation', 'Personal security audits, local network encryption, secure online habits.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Global & UN Credentials -->
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+                    <button onclick="toggleAccordion('certs-global')" class="w-full flex items-center justify-between p-5 text-left font-bold focus:outline-none hover:bg-slate-900/50 transition-colors">
+                        <span class="text-base text-white font-extrabold">Global & UN Credentials</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                    </button>
+                    <div id="certs-global" class="custom-accordion-content px-5 pb-5 bg-slate-950/40 space-y-3 border-t border-white/5">
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Climate Change & The Legal Regime</h4>
+                                <p class="text-xs text-slate-500">UNITAR Global Academy</p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Climate Change Legal Regime', 'UNITAR-CCLR-2026', 'UNITAR', 'International climate frameworks, Paris agreement regulations, environment litigation.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Young SDG Fellow</h4>
+                                <p class="text-xs text-slate-500">CSA Platform - ID: <span class="text-emerald-400 font-mono">ZO-26-FEL-0D0FFD</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Young SDG Fellow', 'ZO-26-FEL-0D0FFD', 'CSA', 'Designing local community solutions aligned with UN sustainable development targets.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                        <div class="p-3 bg-slate-900/50 rounded-xl border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Zero Olympiad Round-1 Participation</h4>
+                                <p class="text-xs text-slate-500">Zero Olympiad - ID: <span class="text-emerald-400 font-mono">ZO-26-R1-0D0FFD</span></p>
+                            </div>
+                            <button onclick="showVerifiedCertificate('Zero Olympiad Round-1', 'ZO-26-R1-0D0FFD', 'Zero Olympiad', 'Carbon emissions mathematics, renewable models analysis, sustainability benchmarks.')" class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/20">Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. RESEARCH & COLUMNS SECTION -->
+        <section id="research-section" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">Research & Columns</span>
+                    <span class="lang-bn hidden">গবেষণা ও কলামসমূহ</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Academic publications, climate study reviews, and analytical social articles.</span>
+                    <span class="lang-bn hidden">শিক্ষা প্রশাসন, জলবায়ু পরিবর্তন আইন ও সমাজ গঠনমূলক আমার মূল প্রবন্ধসমূহ।</span>
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- Research Card 1 -->
+                <div class="glass-card rounded-2xl p-5 border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="px-2.5 py-0.5 bg-indigo-500/10 text-indigo-300 text-xs rounded font-bold">Climate Policy</span>
+                        <h3 class="text-base md:text-lg font-bold text-white">The Legal Regimes of Global Climate Change: Bangladesh Perspective</h3>
+                        <p class="text-xs text-slate-400">Published in Frontier Bangla Journal / Review of UNITAR Legal Standards.</p>
+                    </div>
+                    <button onclick="showVerifiedCertificate('Climate Change Research', 'UNITAR-RE-2026', 'UNITAR & Frontier', 'Comprehensive overview of Paris agreement adaptation frameworks on vulnerable coastal regions of Bangladesh.')" class="px-4 py-2 bg-slate-900 hover:bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/30 shrink-0">Read Abstract</button>
+                </div>
+
+                <!-- Research Card 2 -->
+                <div class="glass-card rounded-2xl p-5 border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-300 text-xs rounded font-bold">Educational Administration</span>
+                        <h3 class="text-base md:text-lg font-bold text-white">Strategic Educational Administration Models for Smart Secondary Institutions</h3>
+                        <p class="text-xs text-slate-400">NSTU Departmental Working Paper Series.</p>
+                    </div>
+                    <button onclick="showVerifiedCertificate('Educational Administration Research', 'NSTU-WP-09', 'NSTU', 'Mapping organizational leadership models, database automation, and teacher training metrics in smart secondary schools.')" class="px-4 py-2 bg-slate-900 hover:bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/30 shrink-0">Read Abstract</button>
+                </div>
+
+                <!-- Research Card 3 -->
+                <div class="glass-card rounded-2xl p-5 border border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="px-2.5 py-0.5 bg-purple-500/10 text-purple-300 text-xs rounded font-bold">Conversational AI</span>
+                        <h3 class="text-base md:text-lg font-bold text-white">Optimizing Conversational AI Prompts for Strategic Business Automation</h3>
+                        <p class="text-xs text-slate-400">Independent Research Brief / Case Analysis.</p>
+                    </div>
+                    <button onclick="showVerifiedCertificate('Conversational AI Optimization', 'AI-RES-2026', 'UniAthena', 'An analysis of prompt structure frameworks, system directive weights, and N8N workflow agents execution.')" class="px-4 py-2 bg-slate-900 hover:bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/30 shrink-0">Read Abstract</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. INTERACTIVE PHOTO & MEDIA GALLERY -->
+        <section id="gallery-section" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">My Event & Activity Gallery</span>
+                    <span class="lang-bn hidden">কাজের গ্যালারি ও চিত্রসমূহ</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">A visual archive showcasing voluntary blood donation drives, debating sessions, seminars, and social activism.</span>
+                    <span class="lang-bn hidden">স্বেচ্ছায় রক্তদান, বিতর্ক, সেমিনার এবং বিভিন্ন সামাজিক ও সেবামূলক কর্মকাণ্ডের চিত্রসমূহ।</span>
+                </p>
+            </div>
+
+            <!-- Gallery Image Grid with Lightbox view -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                
+                <!-- Item 1 -->
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1615461066841-6116ecdccd04?auto=format&fit=crop&w=600&q=80', 'Rhythm Blood Donation Camp', 'Mohammad Hamidul Hasan during a social awareness campaign for Rhythm Blood Center.')" class="glass-card rounded-2xl overflow-hidden group cursor-pointer border border-white/5 hover:border-emerald-500/40 transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1615461066841-6116ecdccd04?auto=format&fit=crop&w=600&q=80" alt="Blood Donation Drive" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] text-rose-400 font-bold uppercase">Blood Donation</span>
+                        <h4 class="text-sm font-bold text-white mt-1">Rhythm Blood Donation Camp</h4>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80', 'NSTU Academic Seminar', 'Focusing on educational administration and smart school frameworks.')" class="glass-card rounded-2xl overflow-hidden group cursor-pointer border border-white/5 hover:border-emerald-500/40 transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" alt="Academic Seminar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] text-emerald-400 font-bold uppercase">NSTU Academic</span>
+                        <h4 class="text-sm font-bold text-white mt-1">Institutional Governance Session</h4>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80', 'Bangla Debate Championship', 'An active parliamentary debate setting highlighting intellectual logic.')" class="glass-card rounded-2xl overflow-hidden group cursor-pointer border border-white/5 hover:border-emerald-500/40 transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Debating" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] text-purple-400 font-bold uppercase">Bangla Debating</span>
+                        <h4 class="text-sm font-bold text-white mt-1">Parliamentary Debating Forum</h4>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80', 'AI Automation & N8N Integration', 'Designing high performance autonomous API agent scripts.')" class="glass-card rounded-2xl overflow-hidden group cursor-pointer border border-white/5 hover:border-emerald-500/40 transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="AI Agent Workflow" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] text-blue-400 font-bold uppercase">AI & Tech</span>
+                        <h4 class="text-sm font-bold text-white mt-1">Autonomous Flow Integration</h4>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 8. VENTURES -->
+        <section id="ventures" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">My Ventures & Projects</span>
+                    <span class="lang-bn hidden">আমার উদ্যোগসমূহ</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Two pioneering organizations designed to drive change in marketing and regional journalism.</span>
+                    <span class="lang-bn hidden">ডিজিটাল এজেন্সি এবং মিডিয়া ক্ষেত্রে অবদান রাখা প্রধান দুটি উদ্যোগ।</span>
+                </p>
+            </div>
+
+            <!-- App-Style Rounded Cards for Ventures -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Venture 1: Hamid Digital Agency -->
+                <div class="glass-card rounded-3xl p-6 relative overflow-hidden group hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] hover:border-emerald-500/30 transition-all duration-300">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 rounded-full group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center text-black font-extrabold text-3xl shadow-lg">
+                            H
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Hamid Digital Agency</h3>
+                            <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+                                <span class="lang-en">CEO & Founder</span>
+                                <span class="lang-bn hidden">সিইও এবং প্রতিষ্ঠাতা</span>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        <span class="lang-en">A premier, niche digital service provider specializing in advanced Email Marketing solutions, Web Development architecture, custom Graphic Branding and comprehensive online automation for global brands.</span>
+                        <span class="lang-bn hidden">একটি বিশেষায়িত ডিজিটাল সার্ভিস প্রোভাইডার প্ল্যাটফর্ম। কাজের ক্ষেত্র: ইমেইল মার্কেটিং, ওয়েব ডেভেলপমেন্ট, কাস্টম গ্রাফিক ডিজাইন, লিড জেনারেশন ও বিশ্বমানের ব্র্যান্ডিং সলিউশন।</span>
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-semibold">Email Marketing</span>
+                        <span class="px-2.5 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-semibold">WebDev</span>
+                        <span class="px-2.5 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-semibold">UI/UX</span>
+                    </div>
+                </div>
+
+                <!-- Venture 2: Frontier Bangla -->
+                <div class="glass-card rounded-3xl p-6 relative overflow-hidden group hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] hover:border-emerald-500/30 transition-all duration-300">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/5 rounded-full group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white font-extrabold text-3xl shadow-lg">
+                            F
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Frontier Bangla</h3>
+                            <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">
+                                <span class="lang-en">Founder & Journalist</span>
+                                <span class="lang-bn hidden">প্রতিষ্ঠাতা এবং সাংবাদিক</span>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        <span class="lang-en">A modern digital news portal broadcasting verified analytical journalism, comprehensive educational materials, op-eds, social columns, and highlight videos for regional progress.</span>
+                        <span class="lang-bn hidden">একটি প্রগতিশীল ও আধুনিক ডিজিটাল নিউজ চ্যানেল এবং মিডিয়া পোর্টাল। সত্যনিষ্ঠ সংবাদ প্রচার, সৃজনশীল কলাম এবং সমাজ গঠনমূলক কন্টেন্ট সম্প্রচারই এর প্রধান উদ্দেশ্য।</span>
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-semibold">Journalism</span>
+                        <span class="px-2.5 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-semibold">Content Media</span>
+                        <span class="px-2.5 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-semibold">Op-Ed Portal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. JONOKOLLAN (Social Welfare) -->
+        <section id="welfare" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-200">
+                    <span class="lang-en">Social Welfare (জনকল্যাণ)</span>
+                    <span class="lang-bn hidden">জনকল্যাণ ও সামাজিক সেবা</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Empowering the community through health assistance, voluntary blood donation and active student advocacy.</span>
+                    <span class="lang-bn hidden">স্বেচ্ছায় রক্তদান, সামাজিক সচেতনতা ও মানবিক দায়িত্ববোধের প্রমাণস্বরূপ আমাদের নিয়মিত কার্যক্রমসমূহ।</span>
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Rhythm Blood Center -->
+                <div class="glass-card rounded-3xl p-6 border-t-4 border-rose-500 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center text-rose-500"><i class="fa-solid fa-droplet text-2xl"></i></span>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Rhythm Blood Center</h3>
+                            <p class="text-xs text-rose-400">Regular Active Blood Donor</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <span class="lang-en">Many successful voluntary blood donations registered with recognized certificates. Dedicated to emergency medical operations and raising awareness in rural and urban areas.</span>
+                        <span class="lang-bn hidden">অনেকবার স্বেচ্ছায় রক্তদানের মাধ্যমে মানুষের পাশে দাঁড়িয়েছেন। জীবন রক্ষার্থে ও সচেতনতা সৃষ্টিতে রিদম ব্লাড সেন্টারের সাথে সরাসরি কাজ করছেন এবং তাদের বিশেষ সম্মাননা লাভ করেছেন।</span>
+                    </p>
+                </div>
+
+                <!-- Sparsha Program -->
+                <div class="glass-card rounded-3xl p-6 border-t-4 border-teal-500 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-400"><i class="fa-solid fa-handshake-angle text-2xl"></i></span>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Sparsha Program ("স্পর্শ")</h3>
+                            <p class="text-xs text-teal-400">Social Support & Medical Campaigns</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <span class="lang-en">Initiated during studies at Adhunagar Islamia Kamil Madrasah. Organizing health awareness, book distributions, and winter clothing collections for unprivileged local families.</span>
+                        <span class="lang-bn hidden">আধুনগর ইসলামিয়া কামিল মাদ্রাসায় পড়ার সময় থেকে বিভিন্ন সামাজিক সচেতনতা ও সেবামূলক কার্যক্রমে স্বেচ্ছাসেবক হিসেবে প্রত্যক্ষ অংশগ্রহণ এবং নেতৃত্বদান।</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. GLOBAL ENGAGEMENT -->
+        <section id="global-engagement" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">
+                    <span class="lang-en">Global Impact & UN Initiatives</span>
+                    <span class="lang-bn hidden">বৈশ্বিক সম্পৃক্ততা ও জাতিসংঘ</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Collaborating in international climate and sustainability projects designed by United Nations agencies.</span>
+                    <span class="lang-bn hidden">জলবায়ু পরিবর্তন বিষয়ক বৈশ্বিক সমাধান এবং জাতিসংঘের বিভিন্ন আন্তর্জাতিক প্রজেক্টে আমার সক্রিয় ভূমিকা।</span>
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- Zero Olympiad -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-400 text-3xl shrink-0"><i class="fa-solid fa-earth-asia"></i></div>
+                    <div class="space-y-2 w-full">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-2">
+                            <h3 class="text-xl font-bold text-white">Zero Olympiad on Climate Change</h3>
+                            <span class="px-2.5 py-0.5 bg-sky-500/10 text-sky-400 text-xs rounded-md border border-sky-500/20 font-bold self-start">Young SDG Fellow</span>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            <span class="lang-en">Certified Young SDG Fellow (ID: ZO-26-FEL-0D0FFD) & 1st Round Certificate (ID: ZO-26-R1-0D0FFD). Pursuing deep research on carbon reduction policies and renewable energy frameworks.</span>
+                            <span class="lang-bn hidden">জাতিসংঘের জলবায়ু পরিবর্তন বিষয়ক জিরো অলিম্পিয়াডে অত্যন্ত সফলতার সাথে অংশগ্রহণ। অর্জন করেছেন ইয়াং এসডিজি ফেলোশিপ সার্টিফিকেট (ID: ZO-26-FEL-0D0FFD)।</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- UNITAR -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 border border-white/5">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-3xl shrink-0"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div class="space-y-2 w-full">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-2">
+                            <h3 class="text-xl font-bold text-white">UNITAR Legal Regime Course</h3>
+                            <span class="px-2.5 py-0.5 bg-indigo-500/10 text-indigo-400 text-xs rounded-md border border-indigo-500/20 font-bold self-start">UNITAR Global</span>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            <span class="lang-en">Completed legal study course on "Climate Change and the Legal Regime". Focuses on international climate protocols, environmental court systems and sustainability laws.</span>
+                            <span class="lang-bn hidden">জাতিসংঘের ট্রেনিং ও গবেষণা ইনস্টিটিউট (UNITAR) থেকে সফলভাবে "ক্লাইমেট চেঞ্জ এবং লিগ্যাল রেজিম" বিষয়ক উচ্চতর কোর্স সম্পন্ন করেছেন।</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. SOCIAL NETWORK GRID -->
+        <section id="social-grid-anchor" class="scroll-mt-28 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+                    <span class="lang-en">Connect Instantly</span>
+                    <span class="lang-bn hidden">সামাজিক নেটওয়ার্ক গ্রিড</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-lg mx-auto">
+                    <span class="lang-en">Use any active link to secure a discussion flow with me.</span>
+                    <span class="lang-bn hidden">যেকোনো একটি সরাসরি লিঙ্কের মাধ্যমে আমাদের প্রফেশনাল আলোচনা শুরু করুন।</span>
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/md.hamidul.hasan.azad" target="_blank" class="p-4 rounded-2xl bg-[#1877f2]/5 border border-[#1877f2]/10 hover:border-[#1877f2]/40 hover:bg-[#1877f2]/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-[#1877f2] flex items-center justify-center text-white"><i class="fa-brands fa-facebook-f"></i></span>
+                    <p class="text-xs font-bold text-white">Facebook</p>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/mohammad-hamidul-hasan" target="_blank" class="p-4 rounded-2xl bg-[#0077b5]/5 border border-[#0077b5]/10 hover:border-[#0077b5]/40 hover:bg-[#0077b5]/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-[#0077b5] flex items-center justify-center text-white"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <p class="text-xs font-bold text-white">LinkedIn</p>
+                </a>
+                <!-- Threads -->
+                <a href="https://threads.net" target="_blank" class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/40 hover:bg-white/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-white text-black flex items-center justify-center font-black">@</span>
+                    <p class="text-xs font-bold text-white">Threads</p>
+                </a>
+                <!-- X (Twitter) -->
+                <a href="https://x.com/khanazadbd312" target="_blank" class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/40 hover:bg-white/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold">X</span>
+                    <p class="text-xs font-bold text-white">X / Twitter</p>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/hasan_azad_emu" target="_blank" class="p-4 rounded-2xl bg-[#e1306c]/5 border border-[#e1306c]/10 hover:border-[#e1306c]/40 hover:bg-[#e1306c]/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-yellow-500 via-[#e1306c] to-purple-600 flex items-center justify-center text-white"><i class="fa-brands fa-instagram"></i></span>
+                    <p class="text-xs font-bold text-white">Instagram</p>
+                </a>
+                <!-- WhatsApp -->
+                <a href="https://wa.me/qr/BEDD3FBIUCUHB1" target="_blank" class="p-4 rounded-2xl bg-[#25d366]/5 border border-[#25d366]/10 hover:border-[#25d366]/40 hover:bg-[#25d366]/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-[#25d366] flex items-center justify-center text-white"><i class="fa-brands fa-whatsapp"></i></span>
+                    <p class="text-xs font-bold text-white">WhatsApp</p>
+                </a>
+                <!-- Telegram -->
+                <a href="https://t.me/Silentwarior2006" target="_blank" class="p-4 rounded-2xl bg-[#229ed9]/5 border border-[#229ed9]/10 hover:border-[#229ed9]/40 hover:bg-[#229ed9]/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-[#229ed9] flex items-center justify-center text-white"><i class="fa-brands fa-telegram"></i></span>
+                    <p class="text-xs font-bold text-white">Telegram</p>
+                </a>
+                <!-- Gmail -->
+                <a href="mailto:hamidulhasan2006@gmail.com" class="p-4 rounded-2xl bg-rose-500/5 border border-rose-500/10 hover:border-rose-500/40 hover:bg-rose-500/10 transition-all flex flex-col justify-between h-28 group">
+                    <span class="w-8 h-8 rounded-lg bg-rose-500 flex items-center justify-center text-white"><i class="fa-solid fa-envelope"></i></span>
+                    <p class="text-xs font-bold text-white">Gmail</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 12. CONTACT FORM WITH EMAILJS INTEGRATION -->
+        <section id="contact" class="scroll-mt-28 max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-6 lg:p-8 space-y-6">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-emerald-400"></i>
+                    <span class="lang-en">Send a Direct Message</span>
+                    <span class="lang-bn hidden">সরাসরি বার্তা পাঠান</span>
+                </h3>
+                
+                <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Your Name</label>
+                            <input type="text" id="contact-name" name="user_name" required class="w-full bg-slate-950 border border-white/10 focus:border-emerald-500 focus:outline-none text-sm text-slate-200 rounded-xl p-3" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Your Email</label>
+                            <input type="email" id="contact-email" name="user_email" required class="w-full bg-slate-950 border border-white/10 focus:border-emerald-500 focus:outline-none text-sm text-slate-200 rounded-xl p-3" placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" required class="w-full bg-slate-950 border border-white/10 focus:border-emerald-500 focus:outline-none text-sm text-slate-200 rounded-xl p-3" placeholder="Inquiry / Prompt Engineering Training">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Message</label>
+                        <textarea id="contact-msg" name="message" required rows="4" class="w-full bg-slate-950 border border-white/10 focus:border-emerald-500 focus:outline-none text-sm text-slate-200 rounded-xl p-3 resize-none" placeholder="Write your project details..."></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-extrabold rounded-xl hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-300 active:scale-95 flex items-center justify-center gap-2">
+                        <span id="btn-text">Send Message</span>
+                        <i id="btn-spinner" class="fa-solid fa-circle-notch animate-spin hidden"></i>
+                    </button>
+                </form>
+                
+                <div id="contact-alert" class="hidden p-4 rounded-xl text-center font-bold text-sm"></div>
+            </div>
+        </section>
+
+        <!-- EXPLORE JOURNEY CTA -->
+        <section class="glass-card rounded-3xl p-8 lg:p-12 text-center space-y-6 relative overflow-hidden">
+            <div class="absolute -bottom-20 -left-20 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            <div class="absolute -top-20 -right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl"></div>
+            
+            <div class="max-w-xl mx-auto space-y-4">
+                <h3 class="text-3xl font-extrabold text-white">
+                    <span class="lang-en">Thank You for Visiting! ✨</span>
+                    <span class="lang-bn hidden">পরিদর্শনের জন্য আপনাকে ধন্যবাদ! ✨</span>
+                </h3>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                    <span class="lang-en">This portfolio demonstrates academic focus, diverse technological expertise, and a core drive to positively build the society. Feel free to reach out for custom collaboration.</span>
+                    <span class="lang-bn hidden">এই ওয়েবসাইটটি আমার শিক্ষাগত মনোযোগ, প্রযুক্তিগত দক্ষতা এবং সমাজ গঠনের ইচ্ছাকে নির্দেশ করে। সরাসরি কোলাবোরেশনের জন্য যেকোনো সময় নক করতে পারেন।</span>
+                </p>
+                <div class="pt-4 flex justify-center">
+                    <button onclick="scrollToSection('hero')" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-black font-extrabold rounded-xl transition-colors shadow-lg">
+                        <span class="lang-en">Scroll to Top</span>
+                        <span class="lang-bn hidden">উপরে ফিরুন</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-slate-500">
+        <p>© 2026 Mohammad Hamidul Hasan. All Rights Reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE VERIFIED CERTIFICATE LIGHTBOX MODAL -->
+    <div id="cert-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-3xl p-6 md:p-8 max-w-lg w-full space-y-5 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
+            
+            <div class="text-center space-y-2">
+                <div class="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-3xl mx-auto">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <h3 id="modal-title" class="text-xl font-extrabold text-white">Course Certificate</h3>
+                <p id="modal-authority" class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Authority Platform</p>
+            </div>
+
+            <!-- Virtual Certificate Mock Frame -->
+            <div class="relative bg-slate-950 p-6 rounded-2xl border border-emerald-500/20 text-center space-y-4 overflow-hidden shadow-inner">
+                <div class="absolute inset-2 border border-emerald-500/10 pointer-events-none"></div>
+                <div class="text-[10px] text-emerald-500 font-mono tracking-widest uppercase">Verified Academic Credential</div>
+                
+                <h4 id="modal-course-name" class="text-lg font-black text-slate-100 tracking-wide">Course Topic Here</h4>
+                
+                <p class="text-[11px] text-slate-400 max-w-sm mx-auto leading-relaxed">
+                    This document certifies that <span class="text-emerald-400 font-bold">Mohammad Hamidul Hasan</span> has successfully met all performance thresholds and acquired specialized skills in:
+                </p>
+                
+                <div id="modal-curriculum" class="p-3 bg-slate-900/50 rounded-xl border border-white/5 text-xs text-slate-300 italic">
+                    Focus curricula.
+                </div>
+                
+                <div class="pt-2 flex justify-between items-center text-[10px] text-slate-500 font-mono">
+                    <div>VERIFICATION ID: <span id="modal-cert-id" class="text-emerald-400 font-bold">ZO-26-R1</span></div>
+                    <div class="text-emerald-500 font-bold"><i class="fa-solid fa-circle-check"></i> SECURE ACTIVE</div>
+                </div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-extrabold rounded-xl hover:opacity-90 transition-opacity text-sm">Close / ঠিক আছে</button>
+        </div>
+    </div>
+
+    <!-- DYNAMIC LIGHTBOX FOR MEDIA GALLERY -->
+    <div id="gallery-lightbox" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-3xl p-4 max-w-2xl w-full space-y-4 relative">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors z-10"><i class="fa-solid fa-xmark text-xl bg-slate-950/80 p-2 rounded-full"></i></button>
+            <div class="overflow-hidden rounded-2xl max-h-[70vh]">
+                <img id="lightbox-img" src="" alt="Gallery Highlight" class="w-full h-full object-contain">
+            </div>
+            <div class="space-y-1 text-center">
+                <h3 id="lightbox-title" class="text-lg font-bold text-white">Event Title</h3>
+                <p id="lightbox-desc" class="text-xs text-slate-400">Brief event highlights narration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR DYNAMIC CAROUSELS, ACCORDIONS, AND EMAIL DELIVERY -->
+    <script>
+        // --- 1. EMAILJS INITIALIZATION with your specific Public Key ---
+        const EMAILJS_PUBLIC_KEY = "sXomZVu0wvYPrWVOO"; 
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        // Handle Contact Form Submission via EmailJS
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const alertBox = document.getElementById('contact-alert');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnSpinner = document.getElementById('btn-spinner');
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-msg').value;
+
+            // Visual State: Submitting
+            alertBox.classList.add('hidden');
+            submitBtn.disabled = true;
+            btnText.textContent = currentLang === 'en' ? "Sending..." : "পাঠানো হচ্ছে...";
+            btnSpinner.classList.remove('hidden');
+
+            // Real EmailJS Send Trigger
+            const serviceID = "default_service"; 
+            const templateID = "template_default"; 
+            
+            const templateParams = {
+                user_name: name,
+                user_email: email,
+                subject: subject,
+                message: message,
+                to_email: "hamidulhasan2006@gmail.com"
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(() => {
+                    alertBox.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'bg-emerald-500/10', 'text-emerald-400');
+                    alertBox.classList.add('bg-emerald-500/10', 'text-emerald-400');
+                    
+                    if (currentLang === 'en') {
+                        alertBox.textContent = `Success! Thank you ${name}, your message has been sent directly to hamidulhasan2006@gmail.com.`;
+                    } else {
+                        alertBox.textContent = `ধন্যবাদ ${name}! আপনার মেসেজটি সফলভাবে সরাসরি hamidulhasan2006@gmail.com এ পাঠানো হয়েছে।`;
+                    }
+                    
+                    document.getElementById('contact-form').reset();
+                })
+                .catch((error) => {
+                    alertBox.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'bg-emerald-500/10', 'text-emerald-400');
+                    alertBox.classList.add('bg-red-500/10', 'text-red-400');
+                    alertBox.textContent = currentLang === 'en' ? `Error: Failed to send email. ${error.text}` : `ত্রুটি: মেসেজ পাঠানো সম্ভব হয়নি। ${error.text}`;
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    btnText.textContent = currentLang === 'en' ? "Send Message" : "বার্তা পাঠান";
+                    btnSpinner.classList.add('hidden');
+                });
+        }
+
+        // --- 2. GENERAL PORTFOLIO INTERACTION SCRIPTS ---
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleMenu() {
+            const panel = document.getElementById('navigation-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const isActive = content.classList.contains('active');
+            
+            const siblings = content.parentElement.parentElement.querySelectorAll('.custom-accordion-content');
+            siblings.forEach(sib => {
+                sib.classList.remove('active');
+            });
+
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+
+        // Language toggle
+        let currentLang = 'en'; 
+        
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.lang-en');
+            const bnElements = document.querySelectorAll('.lang-bn');
+            const btnText = document.getElementById('lang-btn-text');
+
+            if (currentLang === 'en') {
+                enElements.forEach(el => el.classList.add('hidden'));
+                bnElements.forEach(el => el.classList.remove('hidden'));
+                btnText.textContent = 'EN';
+                currentLang = 'bn';
+            } else {
+                enElements.forEach(el => el.classList.remove('hidden'));
+                bnElements.forEach(el => el.classList.add('hidden'));
+                btnText.textContent = 'বাং';
+                currentLang = 'en';
+            }
+            
+            const btnTextEl = document.getElementById('btn-text');
+            if (btnTextEl) {
+                btnTextEl.textContent = currentLang === 'en' ? "Send Message" : "বার্তা পাঠান";
+            }
+        }
+
+        // Auto-Changing Professions
+        const professions = [
+            "Email Marketer", 
+            "Web Developer", 
+            "Writer", 
+            "Columnist", 
+            "Trainer", 
+            "Teacher", 
+            "Prompt Engineer", 
+            "Politician", 
+            "Global Researcher"
+        ];
+        let profIdx = 0;
+        const profEl = document.getElementById('changing-profession');
+
+        function rotateProfession() {
+            profEl.style.opacity = 0;
+            setTimeout(() => {
+                profIdx = (profIdx + 1) % professions.length;
+                profEl.textContent = professions[profIdx];
+                profEl.style.opacity = 1;
+            }, 300);
+        }
+        setInterval(rotateProfession, 2500);
+
+        // Dynamic Quotes Array (7 seconds)
+        const quotes = [
+            {
+                en: '"True leadership is not about being in charge, it is about taking care of those in our charge through constant growth and vision."',
+                bn: '— প্রকৃত নেতৃত্ব কেবল হুকুম দেওয়া নয়, বরং অবিরাম উন্নয়ন এবং সুদূরপ্রসারী দৃষ্টিভঙ্গির মাধ্যমে অন্যের দায়িত্ব নেওয়া এবং আগলে রাখা।'
+            },
+            {
+                en: '"Knowledge without structural implementation is like a powerful engine without wheels; build frameworks, solve real cases."',
+                bn: '— বাস্তবায়নহীন জ্ঞান চাকা ছাড়া ইঞ্জিনের মতো; প্র্যাকটিক্যাল ফ্রেমওয়ার্ক তৈরি করুন এবং বাস্তব সমস্যার সমাধান করুন।'
+            },
+            {
+                en: '"Climate action is not a secondary choice; it is a legal and moral regime that secures generations to come."',
+                bn: '— জলবায়ু সচেতনতা কোনো বিকল্প বিলাসিতা নয়; এটি আগামী প্রজন্মকে টিকিয়ে রাখার আইনি ও নৈতিক দায়িত্ব।'
+            }
+        ];
+        let quoteIdx = 0;
+        const quoteEnEl = document.getElementById('changing-quote-en');
+        const quoteBnEl = document.getElementById('changing-quote-bn');
+
+        function rotateQuotes() {
+            quoteEnEl.style.opacity = 0;
+            quoteBnEl.style.opacity = 0;
+            setTimeout(() => {
+                quoteIdx = (quoteIdx + 1) % quotes.length;
+                quoteEnEl.textContent = quotes[quoteIdx].en;
+                quoteBnEl.textContent = quotes[quoteIdx].bn;
+                quoteEnEl.style.opacity = 1;
+                quoteBnEl.style.opacity = 1;
+            }, 500);
+        }
+        setInterval(rotateQuotes, 7000);
+
+        // Verified Certificate Lightbox
+        function showVerifiedCertificate(courseName, certId, authorityName, curriculumDetails) {
+            const modal = document.getElementById('cert-modal');
+            document.getElementById('modal-course-name').textContent = courseName;
+            document.getElementById('modal-cert-id').textContent = certId;
+            document.getElementById('modal-authority').textContent = authorityName;
+            document.getElementById('modal-curriculum').textContent = curriculumDetails;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('cert-modal').classList.add('hidden');
+        }
+
+        // Media Gallery Lightbox
+        function openLightbox(imgSrc, title, description) {
+            const lightbox = document.getElementById('gallery-lightbox');
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox-title').textContent = title;
+            document.getElementById('lightbox-desc').textContent = description;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('gallery-lightbox').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
